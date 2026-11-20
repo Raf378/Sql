@@ -1,0 +1,63 @@
+
+CREATE TABLE customers (
+    customer_id  NUMBER PRIMARY KEY,
+    first_name VARCHAR(50) NOT NULL,
+    last_name VARCHAR(50) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    driver_license VARCHAR(30) UNIQUE NOT NULL,
+    phone VARCHAR(25)
+);
+
+
+CREATE TABLE locations (
+    location_id  NUMBER PRIMARY KEY,
+    city VARCHAR(80) NOT NULL,
+    address VARCHAR(150) NOT NULL,
+    phone VARCHAR(25)
+);
+
+
+CREATE TABLE cars (
+    car_id NUMBER PRIMARY KEY,
+    location_id INT NOT NULL,
+    brand_model VARCHAR(100) NOT NULL,
+    license_plate VARCHAR(20) UNIQUE NOT NULL
+       
+);
+
+CREATE TABLE rentals (
+    rental_id NUMBER PRIMARY KEY,
+    customer_id INT NOT NULL,
+    car_id INT NOT NULL,
+    start_date DATE NOT NULL,
+    end_date DATE NOT NULL
+);
+
+
+
+INSERT INTO customers (customer_id, first_name, last_name, email, driver_license, phone)
+VALUES (1, 'Aram', 'Sargsyan', 'aram.sargsyan@example.com', 'AM123456', '+37491111111');
+
+INSERT INTO customers (customer_id, first_name, last_name, email, driver_license, phone)
+VALUES (2, 'Ani', 'Hakobyan', 'ani.hakobyan@example.com', 'AM654321', '+37493222222');
+
+INSERT INTO locations (location_id, city, address, phone)
+VALUES (1, 'Yerevan', 'Mashtots Ave 15', '+37410550001');
+
+INSERT INTO locations (location_id, city, address, phone)
+VALUES (2, 'Gyumri', 'Rustaveli St 42', '+37431240002');
+
+
+INSERT INTO cars (car_id, location_id, brand_model, license_plate)
+VALUES (1, 1, 'Toyota Corolla', '35AB777');
+
+INSERT INTO cars (car_id, location_id, brand_model, license_plate)
+VALUES (2, 2, 'Hyundai Elantra', '12CD321');
+
+
+INSERT INTO rentals (rental_id, customer_id, car_id, start_date, end_date)
+VALUES (1, 1, 1, DATE '2026-11-20', DATE '2026-11-25');
+
+INSERT INTO rentals (rental_id, customer_id, car_id, start_date, end_date)
+VALUES (2, 2, 2, DATE '2026-11-21', DATE '2026-11-23');
+
